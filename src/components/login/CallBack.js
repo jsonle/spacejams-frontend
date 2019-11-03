@@ -6,4 +6,4 @@ const Callback = ({location, handleCode}) => {
     return null
 }
  
-export default Callback;{location}
+export default Callback;

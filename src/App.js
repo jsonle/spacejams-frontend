@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 're
 import NavbarContainer from './components/navbar/NavbarContainer';
 import LoginPage from './components/login/LoginPage';
 import CallBack from './components/login/CallBack';
+import Auth from './components/login/Auth';
 import HomePageContainer from './components/homepage/HomePageContainer';
 
 
@@ -13,8 +14,12 @@ class App extends React.Component {
     currentUser: {}
   }
 
-  handleCode = () => {
-
+  handleCode = (code) => {
+    Auth.login(code)
+    .then(resp=> {
+      const currentUser = resp
+      this.setState({currentUser}, this.history.push('/'))
+    })
   }
 
   handleCallBack = ({location}) => {
@@ -22,6 +27,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <Router>
         <div className="App">
