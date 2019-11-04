@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { LinkContainer } from 'react-router-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 
 const RoomCard = ({ room }) => {
@@ -14,9 +14,9 @@ const RoomCard = ({ room }) => {
                 <Card.Text>
                     Placeholder description
                 </Card.Text>
-                <LinkContainer to={`/rooms/${playlist_id}`}>
+                <Link to={`/room/${playlist_id}`}>
                     <Button variant="success">Enter Room</Button>
-                </LinkContainer>
+                </Link>
             </Card.Body>
             <Card.Footer>
                 <small className="text-muted">{users.length} users currently listening</small>

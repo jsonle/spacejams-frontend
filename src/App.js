@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import NavbarContainer from './components/navbar/NavbarContainer';
 import CallBack from './components/login/CallBack';
 import Auth from './adapters/Auth';
 import HomePageContainer from './components/homepage/HomePageContainer';
-import RoomsContainer from './components/rooms/RoomsContainer';
+import BrowseContainer from './components/browse/BrowseContainer';
+import RoomContainer from './components/room/RoomContainer';
 
 
 class App extends React.Component {
@@ -34,9 +35,11 @@ class App extends React.Component {
           <NavbarContainer />
           <Switch>
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
-            <Route exact path="/callback" component={this.handleCallBack} />
-            <Route exact path="/rooms"  render={(routeProps) => <RoomsContainer {...routeProps} currentUser={this.state.currentUser} />} />
+            <Route path="/callback" component={this.handleCallBack} />
+            <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
+            <Route path='/room/:playlist_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.props.currentUser}/>}/>
           </Switch>
+
         </div>
     )
   }
