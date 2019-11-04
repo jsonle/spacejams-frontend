@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class NavbarContainer extends Component {
     state = {  }
+
     render() { 
         return (
             <Navbar className="navbar" bg="light" expand="lg">
-                <Navbar.Brand>JukeBox</Navbar.Brand>
-                <Button href="http://localhost:3000/api/v1/login" variant="success">Log in with Spotify</Button>
+                <LinkContainer to="/">
+                    <Navbar.Brand>
+                        JukeBox
+                    </Navbar.Brand>
+                </LinkContainer>
             </Navbar>
         );
     }
