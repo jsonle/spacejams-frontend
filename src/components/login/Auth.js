@@ -5,7 +5,10 @@ export default class Auth {
     static login(code) {
         return fetch(Routes.login, {
             method: "POST",
-            headers: Headers(),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
             body: JSON.stringify({ code }),
         })
         .then( resp => resp.json());

@@ -11,14 +11,14 @@ import HomePageContainer from './components/homepage/HomePageContainer';
 class App extends React.Component {
 
   state = {
-    currentUser: {}
+    currentUser: null
   }
 
   handleCode = (code) => {
     Auth.login(code)
     .then(resp=> {
       const currentUser = resp
-      this.setState({currentUser}, this.history.push('/'))
+      this.setState({currentUser}, this.props.history.push('/'))
     })
   }
 
@@ -33,11 +33,10 @@ class App extends React.Component {
         <div className="App">
           <NavbarContainer />
           <Switch>
-            <Route path="/login" component={LoginPage} />
+            <Route exact path="/login" component={LoginPage} />
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.currentUser}/>} />
-            <Route exact path="/callback" component={this.handleCallBack} />  
           </Switch>
-        
+          <Route exact path="/callback" component={this.handleCallBack} />
         </div>
       </Router>
     )
