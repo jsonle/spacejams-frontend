@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RoomsList from './RoomsList';
 
-class BrowseContainer extends Component {
+class RoomsContainer extends Component {
     state = {
         rooms: []
     }
@@ -21,7 +21,7 @@ class BrowseContainer extends Component {
     }
 
     render() { 
-        console.log(this.state.rooms)
+        console.log(this.props)
         return (
             <div className="browse-list">
                 <RoomsList currentUser={this.props.currentUser} rooms={this.state.rooms}/>
@@ -30,4 +30,4 @@ class BrowseContainer extends Component {
     }
 }
  
-export default BrowseContainer;
+export default RoomsContainer;

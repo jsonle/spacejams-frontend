@@ -8,9 +8,9 @@ class WelcomePage extends Component {
     render() { 
         return (
             <div>
-                <h1>Welcome {this.props.currentUser.display_name}</h1>
-                <LinkContainer to="/browse">
-                    <Button variant="success">Start Browsing</Button>
+                <h1>Welcome, {this.props.currentUser.display_name}</h1>
+                <LinkContainer to="/rooms">
+                    <Button variant="success">Start Listening</Button>
                 </LinkContainer>
             </div>
         );

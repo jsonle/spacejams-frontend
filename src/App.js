@@ -5,7 +5,7 @@ import NavbarContainer from './components/navbar/NavbarContainer';
 import CallBack from './components/login/CallBack';
 import Auth from './adapters/Auth';
 import HomePageContainer from './components/homepage/HomePageContainer';
-import BrowseContainer from './components/browse/BrowseContainer';
+import RoomsContainer from './components/rooms/RoomsContainer';
 
 
 class App extends React.Component {
@@ -35,7 +35,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
             <Route exact path="/callback" component={this.handleCallBack} />
-            <Route exact path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
+            <Route exact path="/rooms"  render={(routeProps) => <RoomsContainer {...routeProps} currentUser={this.state.currentUser} />} />
           </Switch>
         </div>
     )

@@ -8,7 +8,7 @@ class NavbarContainer extends Component {
 
     render() { 
         return (
-            <Navbar className="navbar" bg="light" expand="lg">
+            <Navbar className="navbar" bg="dark" variant="dark">
                 <LinkContainer to="/">
                     <Navbar.Brand>
                         JukeBox
