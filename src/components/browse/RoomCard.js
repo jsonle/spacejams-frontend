@@ -1,11 +1,20 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 
-const RoomCard = () => {
+const RoomCard = ({ room }) => {
     return (
-        <div>
-
-        </div>
+        <Card>
+            <Card.Img variant="top" src={room.playlist_image_url} />
+            <Card.Body>
+                <Card.Title>{room.playlist_name}</Card.Title>
+                <Card.Text>
+                    Placeholder description
+                </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+                <small className="text-muted">{room.users.length} users currently listening</small>
+            </Card.Footer>
+        </Card>
     );
 }
  

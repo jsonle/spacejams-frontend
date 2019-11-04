@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import RoomCard from './RoomCard';
+import CardDeck from 'react-bootstrap/CardDeck'
 
 class RoomsList extends Component {
-    state = {  }
+    state = {
+
+    }
+
+    displayRooms = () => {
+       return this.props.rooms.map( (room, index) => {
+            return <RoomCard room={room} key={index} />
+        })
+    }
+
     render() { 
         return (
-            <div></div>
+            <CardDeck>
+                {this.displayRooms()}
+            </CardDeck>
         );
     }
 }

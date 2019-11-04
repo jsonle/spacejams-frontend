@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class WelcomePage extends Component {
     state = {  }
@@ -7,6 +9,9 @@ class WelcomePage extends Component {
         return (
             <div>
                 <h1>Welcome {this.props.currentUser.display_name}</h1>
+                <LinkContainer to="/browse">
+                    <Button variant="success">Start Browsing</Button>
+                </LinkContainer>
             </div>
         );
     }
