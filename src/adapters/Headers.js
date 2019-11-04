@@ -4,3 +4,5 @@ const Headers = () => (
         "Accept": "application/json"
     }
 )
+
+export default Headers;

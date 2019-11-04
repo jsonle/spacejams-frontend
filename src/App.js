@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import NavbarContainer from './components/navbar/NavbarContainer';
-import LoginPage from './components/login/LoginPage';
+
 import CallBack from './components/login/CallBack';
-import Auth from './components/login/Auth';
+import Auth from './adapters/Auth';
 import HomePageContainer from './components/homepage/HomePageContainer';
 
 
@@ -17,8 +17,10 @@ class App extends React.Component {
   handleCode = (code) => {
     Auth.login(code)
     .then(resp=> {
-      const currentUser = resp
-      this.setState({currentUser}, this.props.history.push('/'))
+      // console.log(resp);
+      this.setState({
+        currentUser: resp
+      }, this.props.history.push('/'))
     })
   }
 
@@ -27,18 +29,16 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.currentUser)
     return (
-      <Router>
         <div className="App">
           <NavbarContainer />
           <Switch>
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.currentUser}/>} />
+            <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
+            {/* <Route exact path="/login" component={LoginPage} /> */}
+            <Route exact path="/callback" component={this.handleCallBack} />
           </Switch>
-          <Route exact path="/callback" component={this.handleCallBack} />
         </div>
-      </Router>
     )
   }
 }
