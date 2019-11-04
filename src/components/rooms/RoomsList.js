@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RoomCard from './RoomCard';
 import CardDeck from 'react-bootstrap/CardDeck'
-import { LinkContainer } from 'react-router-bootstrap';
 
 class RoomsList extends Component {
     state = {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import RoomsList from './RoomsList';
+import { Route } from 'react-router-dom';
+import PlaylistRoomContainer from './PlaylistRoomContainer';
 
 class RoomsContainer extends Component {
     state = {
@@ -25,6 +27,7 @@ class RoomsContainer extends Component {
         return (
             <div className="browse-list">
                 <RoomsList currentUser={this.props.currentUser} rooms={this.state.rooms}/>
+                <Route path={`${this.props.match.url}/:playlist_id`} component={PlaylistRoomContainer}/>
             </div>
         );
     }
