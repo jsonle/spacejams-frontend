@@ -4,11 +4,13 @@ import TracksList from './TracksList';
 
 class RoomContainer extends Component {
     state = {
-        currentPlaylist: null
+        currentPlaylist: {},
+        currentRoom: {}
     }
 
     componentDidMount() {
-        this.getCurrentPlaylist()
+        this.getCurrentPlaylist();
+        this.getCurrentRoom();
     }
 
     getCurrentPlaylist = () => {
@@ -24,6 +26,18 @@ class RoomContainer extends Component {
         .then(playlist => {
             this.setState({
                 currentPlaylist: playlist
+            })
+        })
+    }
+
+    getCurrentRoom = () => {
+        const room_id = this.props.match.params.room_id
+
+        fetch(`http://localhost:3000/rooms/${room_id}`)
+        .then(resp => resp.json())
+        .then(room => {
+            this.setState({
+                currentRoom: room
             })
         })
     }
@@ -60,10 +74,10 @@ class RoomContainer extends Component {
     }
 
     render() { 
-        console.log(this.props)
+        console.log(this.state)
         return (
             <>
-            <h1>Playlist room</h1>
+            <h1>{this.state.currentRoom.playlist_name}</h1>
             <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
             </>
         );

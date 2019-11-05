@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 
 
 const RoomCard = ({ room, handleClick }) => {
@@ -14,9 +13,7 @@ const RoomCard = ({ room, handleClick }) => {
                 <Card.Text>
                     Placeholder description
                 </Card.Text>
-                {/* <Link to={`/room/${playlist_id}/${id}`}> */}
                     <Button variant="success" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
-                {/* </Link> */}
             </Card.Body>
             <Card.Footer>
                 <small className="text-muted">{users.length} users currently listening</small>
