@@ -29,7 +29,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.currentUser)
     return (
         <div className="App">
           <NavbarContainer />
