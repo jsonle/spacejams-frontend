@@ -9,7 +9,7 @@ class WelcomePage extends Component {
         return (
             <div>
                 <h1>Welcome, {this.props.currentUser.display_name}</h1>
-                <LinkContainer to="/rooms">
+                <LinkContainer to="/browse">
                     <Button variant="success">Start Listening</Button>
                 </LinkContainer>
             </div>

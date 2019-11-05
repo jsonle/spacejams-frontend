@@ -1,24 +1,40 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import NavbarContainer from './components/navbar/NavbarContainer';
 import CallBack from './components/login/CallBack';
 import Auth from './adapters/Auth';
 import HomePageContainer from './components/homepage/HomePageContainer';
-import RoomsContainer from './components/rooms/RoomsContainer';
+import BrowseContainer from './components/browse/BrowseContainer';
+import RoomContainer from './components/room/RoomContainer';
 
 
 class App extends React.Component {
 
-  state = {
-    currentUser: null
+  constructor() {
+    super()
+    const user = JSON.parse(localStorage.getItem("user"));
+    this.state = {
+      currentUser: user ? user : null
+    }
+  }
+
+  componentDidMount() {
+    // Checks whether user has been updated, and if so then updates currentUser
+    const updatedUser = JSON.parse(localStorage.getItem("user"));
+    if (this.state.currentUser && this.state.currentUser !== updatedUser) {
+      this.setState({
+        currentUser: updatedUser
+      })
+    }
   }
 
   handleCode = (code) => {
     Auth.login(code)
-    .then(resp=> {
+    .then(user=> {
+      localStorage.setItem('user', JSON.stringify(user));
       this.setState({
-        currentUser: resp
+        currentUser: user
       }, this.props.history.push('/'))
     })
   }
@@ -27,15 +43,17 @@ class App extends React.Component {
     return <CallBack location={location} handleCode={this.handleCode} />  
   }
 
+
   render() {
-    console.log(this.state.currentUser)
+    console.log(this.state.currentUser);
     return (
         <div className="App">
           <NavbarContainer />
           <Switch>
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
-            <Route exact path="/callback" component={this.handleCallBack} />
-            <Route exact path="/rooms"  render={(routeProps) => <RoomsContainer {...routeProps} currentUser={this.state.currentUser} />} />
+            <Route path="/callback" component={this.handleCallBack} />
+            <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
+            <Route path='/room/:playlist_id/:room_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser}/>}/>
           </Switch>
         </div>
     )

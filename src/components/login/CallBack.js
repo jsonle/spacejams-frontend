@@ -1,4 +1,3 @@
-import React from 'react';
 
 const CallBack = ({location, handleCode}) => {
     const code = location.search.split("?code=")[1];

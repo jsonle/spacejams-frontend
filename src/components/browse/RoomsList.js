@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RoomCard from './RoomCard';
 import CardDeck from 'react-bootstrap/CardDeck'
-import { LinkContainer } from 'react-router-bootstrap';
 
 class RoomsList extends Component {
     state = {
@@ -10,9 +9,10 @@ class RoomsList extends Component {
 
     displayRooms = () => {
        return this.props.rooms.map( (room, index) => {
-            return <RoomCard room={room} key={index} />
+            return <RoomCard room={room} key={index} handleClick={this.props.handleClick}/>
         })
     }
+
 
     render() { 
         return (
