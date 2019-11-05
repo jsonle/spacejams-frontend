@@ -15,7 +15,8 @@ class App extends React.Component {
     super()
     const user = JSON.parse(localStorage.getItem("user"));
     this.state = {
-      currentUser: user ? user : null
+      currentUser: user ? user : null,
+      currentRoom: null
     }
   }
 
@@ -39,6 +40,18 @@ class App extends React.Component {
     })
   }
 
+  enterRoom = (playlist_id, room_id) => {
+
+    fetch(`http://localhost:3000/rooms/${room_id}`)
+    .then(resp => resp.json())
+    .then(room => {
+        this.setState({
+            currentRoom: room
+        }, this.props.history.push(`/room/${playlist_id}/${room_id}`))
+    })
+}
+
+
   handleCallBack = ({location}) => {
     return <CallBack location={location} handleCode={this.handleCode} />  
   }
@@ -51,8 +64,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
             <Route path="/callback" component={this.handleCallBack} />
-            <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
-            <Route path='/room/:playlist_id/:room_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser}/>}/>
+            <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} enterRoom={this.enterRoom}/>} />
+            <Route path='/room/:playlist_id/:room_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser} currentRoom={this.state.currentRoom}/>}/>
           </Switch>
         </div>
     )

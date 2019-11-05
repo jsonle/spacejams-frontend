@@ -43,13 +43,10 @@ class BrowseContainer extends Component {
         fetch(`http://localhost:3000/users/${user_id}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
-            console.log(updatedUser);
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser))
-            this.props.history.push(`/room/${playlist_id}/${room_id}`)
+            this.props.enterRoom(playlist_id, room_id)
         })
-
-
     }
 
     render() { 
