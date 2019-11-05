@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import TracksList from './TracksList';
+import PlaylistDetails from './PlaylistDetails';
 
 class RoomContainer extends Component {
     state = {
@@ -77,8 +81,18 @@ class RoomContainer extends Component {
         console.log(this.state)
         return (
             <>
-            <h1>{this.state.currentRoom.playlist_name}</h1>
-            <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
+            <Container>
+                <Row>
+                    <Col sm={8}>
+                        <Row>
+                            <TracksList />
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
+                    </Col>
+                </Row>
+            </Container>
             </>
         );
     }
