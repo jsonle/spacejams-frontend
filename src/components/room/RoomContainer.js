@@ -7,11 +7,33 @@ class RoomContainer extends Component {
         currentPlaylist: null
     }
 
+    componentDidMount() {
+        this.getCurrentPlaylist()
+    }
+
+    getCurrentPlaylist = () => {
+        const playlist_id = this.props.match.params.playlist_id
+        const access_token = JSON.parse(localStorage.getItem("user")).access_token
+
+        fetch(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
+            headers: {
+                "Authorization": `Bearer ${access_token}`
+            }
+        })
+        .then(resp => resp.json())
+        .then(playlist => {
+            this.setState({
+                currentPlaylist: playlist
+            })
+        })
+    }
+
     handleLeaveRoomClick = (event) => {
         event.preventDefault();
         this.props.history.push('/browse')
     }
 
+    // Removes user and room association on when user leaves room
     componentWillUnmount() {
         const user_id = JSON.parse(localStorage.getItem("user")).id
 
