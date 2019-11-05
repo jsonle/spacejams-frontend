@@ -19,6 +19,16 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    // Checks whether user has been updated, and if so then updates currentUser
+    const updatedUser = JSON.parse(localStorage.getItem("user"));
+    if (this.state.currentUser && this.state.currentUser !== updatedUser) {
+      this.setState({
+        currentUser: updatedUser
+      })
+    }
+  }
+
   handleCode = (code) => {
     Auth.login(code)
     .then(user=> {
@@ -33,7 +43,9 @@ class App extends React.Component {
     return <CallBack location={location} handleCode={this.handleCode} />  
   }
 
+
   render() {
+    console.log(this.state.currentUser);
     return (
         <div className="App">
           <NavbarContainer />
@@ -41,7 +53,7 @@ class App extends React.Component {
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
             <Route path="/callback" component={this.handleCallBack} />
             <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
-            <Route path='/room/:playlist_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.props.currentUser}/>}/>
+            <Route path='/room/:playlist_id/:room_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser}/>}/>
           </Switch>
         </div>
     )
