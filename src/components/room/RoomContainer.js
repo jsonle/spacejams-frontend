@@ -85,6 +85,7 @@ class RoomContainer extends Component {
                 <Row>
                     <Col sm={8}>
                         <Row>
+                            <PlaylistDetails />
                             <TracksList />
                         </Row>
                     </Col>

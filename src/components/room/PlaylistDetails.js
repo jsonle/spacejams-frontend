@@ -1,10 +1,11 @@
 import React from 'react';
+import Col from 'react-bootstrap/Col';
 
 const PlaylistDetails = () => {
     return (
-        <div>
+        <Col sm={6}>
             
-        </div>
+        </Col>
     );
 }
  
