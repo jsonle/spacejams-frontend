@@ -11,15 +11,20 @@ import RoomContainer from './components/room/RoomContainer';
 
 class App extends React.Component {
 
-  state = {
-    currentUser: null
+  constructor() {
+    super()
+    const user = JSON.parse(localStorage.getItem("user"));
+    this.state = {
+      currentUser: user ? user : null
+    }
   }
 
   handleCode = (code) => {
     Auth.login(code)
-    .then(resp=> {
+    .then(user=> {
+      localStorage.setItem('user', JSON.stringify(user));
       this.setState({
-        currentUser: resp
+        currentUser: user
       }, this.props.history.push('/'))
     })
   }
@@ -38,7 +43,6 @@ class App extends React.Component {
             <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
             <Route path='/room/:playlist_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.props.currentUser}/>}/>
           </Switch>
-
         </div>
     )
   }
