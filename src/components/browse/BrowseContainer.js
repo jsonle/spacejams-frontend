@@ -22,9 +22,9 @@ class BrowseContainer extends Component {
 
     handleClick = (event) => {
         event.preventDefault();
-        const room_id = event.target.value
-        const playlist_id = event.target.name
-        const user_id = JSON.parse(localStorage.getItem("user")).id
+        const roomId = event.target.value
+        const playlistId = event.target.name
+        const userId = JSON.parse(localStorage.getItem("user")).id
 
         let config = {
             method: "PATCH",
@@ -34,18 +34,18 @@ class BrowseContainer extends Component {
             },
             body: JSON.stringify({
                 user: {
-                    id: user_id,
-                    room_id: room_id
+                    id: userId,
+                    roomId: roomId
                 }
             })
         }
 
-        fetch(`http://localhost:3000/users/${user_id}`, config)
+        fetch(`http://localhost:3000/users/${userId}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser))
-            this.props.enterRoom(playlist_id, room_id)
+            this.props.enterRoom(playlistId, roomId)
         })
     }
 

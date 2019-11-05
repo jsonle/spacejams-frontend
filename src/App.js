@@ -40,14 +40,14 @@ class App extends React.Component {
     })
   }
 
-  enterRoom = (playlist_id, room_id) => {
+  enterRoom = (playlistId, roomId) => {
 
-    fetch(`http://localhost:3000/rooms/${room_id}`)
+    fetch(`http://localhost:3000/rooms/${roomId}`)
     .then(resp => resp.json())
     .then(room => {
         this.setState({
             currentRoom: room
-        }, this.props.history.push(`/room/${playlist_id}/${room_id}`))
+        }, this.props.history.push(`/room/${playlistId}/${roomId}`))
     })
 }
 
@@ -65,7 +65,7 @@ class App extends React.Component {
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
             <Route path="/callback" component={this.handleCallBack} />
             <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} enterRoom={this.enterRoom}/>} />
-            <Route path='/room/:playlist_id/:room_id'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser} currentRoom={this.state.currentRoom}/>}/>
+            <Route path='/room/:playlistId/:roomId'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser} currentRoom={this.state.currentRoom}/>}/>
           </Switch>
         </div>
     )

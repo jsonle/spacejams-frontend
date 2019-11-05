@@ -8,20 +8,22 @@ import PlaylistDetails from './PlaylistDetails';
 
 class RoomContainer extends Component {
     state = {
-        currentPlaylist: {}
+        currentPlaylist: null
     }
 
     componentDidMount() {
-        this.getCurrentPlaylist();
+        if (!this.state.currentPlaylist) {
+            this.getCurrentPlaylist();
+        }
     }
 
     getCurrentPlaylist = () => {
-        const playlist_id = this.props.match.params.playlist_id
-        const access_token = JSON.parse(localStorage.getItem("user")).access_token
+        const playlistId = this.props.match.params.playlist_id
+        const accessToken = JSON.parse(localStorage.getItem("user")).access_token
 
-        fetch(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
+        fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
             headers: {
-                "Authorization": `Bearer ${access_token}`
+                "Authorization": `Bearer ${accessToken}`
             }
         })
         .then(resp => resp.json())
@@ -38,9 +40,9 @@ class RoomContainer extends Component {
         this.props.history.push('/browse')
     }
 
-    // Removes user and room association on when user leaves room
+    // Removes user and room association when user leaves room
     componentWillUnmount() {
-        const user_id = JSON.parse(localStorage.getItem("user")).id
+        const userId = JSON.parse(localStorage.getItem("user")).id
 
         let config = {
             method: "PATCH",
@@ -50,13 +52,13 @@ class RoomContainer extends Component {
             },
             body: JSON.stringify({
                 user: {
-                    id: user_id,
-                    room_id: null
+                    id: userId,
+                    roomId: null
                 }
             })
         }
 
-        fetch(`http://localhost:3000/users/${user_id}`, config)
+        fetch(`http://localhost:3000/users/${userId}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
@@ -65,15 +67,14 @@ class RoomContainer extends Component {
     }
 
     render() { 
-        console.log(this.props)
         return (
             <>
             <Container>
                 <Row>
                     <Col sm={8}>
                         <Row>
-                            <PlaylistDetails />
-                            <TracksList />
+                            <PlaylistDetails playlist={this.state.currentPlaylist}/>
+                            <TracksList playlistId={this.props.match.params.playlist_id}/>
                         </Row>
                     </Col>
                     <Col>
