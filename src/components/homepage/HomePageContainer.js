@@ -5,7 +5,6 @@ import LoginPage from '../login/LoginPage';
 class HomePageContainer extends Component {
     state = {  }
     render() { 
-        console.log(this.props.currentUser);
         return (
             <div>
                 {this.props.currentUser ? <WelcomePage currentUser={this.props.currentUser} /> : <LoginPage />}

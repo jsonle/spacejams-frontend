@@ -10,7 +10,7 @@ class WelcomePage extends Component {
             <div>
                 <h1>Welcome, {this.props.currentUser.display_name}</h1>
                 <LinkContainer to="/browse">
-                    <Button variant="success">Start Listening</Button>
+                    <Button variant="success">Start Browsing</Button>
                 </LinkContainer>
             </div>
         );
