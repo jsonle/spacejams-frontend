@@ -28,7 +28,9 @@
 .tracks-list {
   float: left;
   width: 100%;
-  overflow-y: scroll;
+  height: 75vh;
+  overflow: scroll;
+  margin-top: 10px;
 }
 
 .list-group-item {
@@ -48,13 +50,21 @@
   margin-left: 30px;
 }
 
+.playlist-details {
+  height: auto;
+  margin-bottom: 20px;
+  position: relative;
+}
 
-
-.playlist {
+.playlist-column {
   float: left;
   margin-right: 0;
 }
 
 .playlist-cover {
   float: left;
+}
+
+.leave-button {
+  position: relative;
 }

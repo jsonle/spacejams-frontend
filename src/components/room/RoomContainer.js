@@ -74,9 +74,9 @@ class RoomContainer extends Component {
         // console.log(this.state.playlistImage)
         return (
             <>
-            <Container>
+            <Container fluid>
                 <Row>
-                    <Col sm={8} className="playlist">
+                    <Col sm={8} className="playlist-column">
                         <PlaylistDetails 
                             playlist={this.state.currentPlaylist} 
                             image={this.state.playlistImage} 

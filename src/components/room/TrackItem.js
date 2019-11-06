@@ -5,7 +5,7 @@ const TrackItem = ({ track, listNumber, displayArtistNames }) => {
     return (
         <ListGroup.Item action>
             <div className="track-info">
-                <span id="track-number">{listNumber}.</span> {track.name} <span id="track-artists">by {displayArtistNames(track.artists)}</span>
+                <span id="track-number">{listNumber}.</span> {track.name} <span id="track-artists"> {displayArtistNames(track.artists)}</span>
             </div>
         </ListGroup.Item>
     );
