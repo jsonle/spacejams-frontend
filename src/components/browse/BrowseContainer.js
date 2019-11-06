@@ -45,7 +45,7 @@ class BrowseContainer extends Component {
         .then( updatedUser => {
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser))
-            this.props.enterRoom(playlistId, roomId)
+            this.props.onEnterRoom(playlistId, roomId)
         })
     }
 

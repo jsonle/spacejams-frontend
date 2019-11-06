@@ -35,10 +35,26 @@
   display: inline-block;
 }
 
-.track-info span {
+.track-info {
+  text-align: left;
+}
+
+.track-info #track-number {
   margin-right: 10px;
 }
 
-.track-info {
-  text-align: left;
+.track-info #track-artists {
+  font-size: small;
+  margin-left: 30px;
+}
+
+
+
+.playlist {
+  float: left;
+  margin-right: 0;
+}
+
+.playlist-cover {
+  float: left;
 }

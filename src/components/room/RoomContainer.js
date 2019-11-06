@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,7 +7,9 @@ import PlaylistDetails from './PlaylistDetails';
 
 class RoomContainer extends Component {
     state = {
-        currentPlaylist: {}
+        currentPlaylist: {},
+        playlistImage: "",
+        playlistOwner: {}
     }
 
     componentDidMount() {
@@ -21,15 +22,18 @@ class RoomContainer extends Component {
         const playlistId = this.props.match.params.playlistId
         const accessToken = JSON.parse(localStorage.getItem("user")).access_token
 
-        fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+        fetch(`https://api.spotify.com/v1/playlists/${playlistId}?fields=name,description,images,owner`, {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
             }
         })
         .then(resp => resp.json())
         .then(playlist => {
+            console.log(playlist);
             this.setState({
-                currentPlaylist: playlist
+                currentPlaylist: playlist,
+                playlistImage: playlist.images[0].url,
+                playlistOwner: playlist.owner
             })
         })
     }
@@ -67,18 +71,22 @@ class RoomContainer extends Component {
     }
 
     render() { 
+        // console.log(this.state.playlistImage)
         return (
             <>
             <Container>
                 <Row>
-                    <Col sm={8}>
-                        <Row>
-                            <PlaylistDetails playlist={this.state.currentPlaylist}/>
-                        </Row>
-                            <TracksList playlistId={this.props.match.params.playlistId}/>
+                    <Col sm={8} className="playlist">
+                        <PlaylistDetails 
+                            playlist={this.state.currentPlaylist} 
+                            image={this.state.playlistImage} 
+                            owner={this.state.playlistOwner}
+                            handleClick={this.handleLeaveRoomClick}
+                        />
+                        <TracksList playlistId={this.props.match.params.playlistId}/>
                     </Col>
                     <Col>
-                        <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
+                        
                     </Col>
                 </Row>
             </Container>

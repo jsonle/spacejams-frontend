@@ -40,7 +40,7 @@ class App extends React.Component {
     })
   }
 
-  enterRoom = (playlistId, roomId) => {
+  onEnterRoom = (playlistId, roomId) => {
 
     fetch(`http://localhost:3000/rooms/${roomId}`)
     .then(resp => resp.json())
@@ -49,7 +49,7 @@ class App extends React.Component {
             currentRoom: room
         }, this.props.history.push(`/room/${playlistId}/${roomId}`))
     })
-}
+  }
 
 
   handleCallBack = ({location}) => {
@@ -64,7 +64,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
             <Route path="/callback" component={this.handleCallBack} />
-            <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} enterRoom={this.enterRoom}/>} />
+            <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} onEnterRoom={this.onEnterRoom}/>} />
             <Route path='/room/:playlistId/:roomId'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser} currentRoom={this.state.currentRoom}/>}/>
           </Switch>
         </div>

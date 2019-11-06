@@ -1,11 +1,20 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button';
 
-const PlaylistDetails = () => {
+const PlaylistDetails = ( {image, playlist, owner, handleClick} ) => {
     return (
-        <Col sm={6}>
-            
-        </Col>
+        <div className="playlist-details">
+            <Image className="playlist-cover" src={image} fluid />
+            <Card className="playlist-info">
+                <Card.Body>
+                    <Card.Title>{playlist.name}</Card.Title>
+                        <footer>Playlist by {owner.display_name}</footer>
+                    <Button variant="success" onClick={handleClick}>Leave Room</Button>
+                </Card.Body>
+            </Card>      
+        </div>
     );
 }
  

@@ -1,11 +1,11 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup'
 
-const TrackItem = ({ track, listNumber }) => {
+const TrackItem = ({ track, listNumber, displayArtistNames }) => {
     return (
         <ListGroup.Item action>
             <div className="track-info">
-                <span>{listNumber}.</span> {track.name} by {track.artists[0].name}
+                <span id="track-number">{listNumber}.</span> {track.name} <span id="track-artists">by {displayArtistNames(track.artists)}</span>
             </div>
         </ListGroup.Item>
     );
