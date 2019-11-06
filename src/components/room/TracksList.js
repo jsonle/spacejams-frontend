@@ -32,7 +32,11 @@ class TracksList extends Component {
     }
 
     displayTracks = () => {
-        return this.state.currentTracks.map( (track, index) => <TrackItem track={track.track} key={index} listNumber={index + 1} displayArtistNames={this.displayArtistNames}/>)
+        return this.state.currentTracks.map( (track, index) => {
+            if (track.track) {
+                return <TrackItem track={track.track} key={index} listNumber={index + 1} displayArtistNames={this.displayArtistNames}/>
+            }
+        })
     }
 
     displayArtistNames = (artists) => {
@@ -45,6 +49,7 @@ class TracksList extends Component {
 
 
     render() { 
+        // console.log(this.state.currentTracks[0])
         return (
             <div className="tracks-list">
                 <ListGroup>
