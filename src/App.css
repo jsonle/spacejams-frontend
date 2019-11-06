@@ -24,3 +24,21 @@
 .navbar {
   margin-bottom: 25px;
 }
+
+.tracks-list {
+  float: left;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.list-group-item {
+  display: inline-block;
+}
+
+.track-info span {
+  margin-right: 10px;
+}
+
+.track-info {
+  text-align: left;
+}

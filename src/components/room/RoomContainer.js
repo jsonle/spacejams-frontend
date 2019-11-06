@@ -8,17 +8,17 @@ import PlaylistDetails from './PlaylistDetails';
 
 class RoomContainer extends Component {
     state = {
-        currentPlaylist: null
+        currentPlaylist: {}
     }
 
     componentDidMount() {
-        if (!this.state.currentPlaylist) {
+        if (!this.state.currentPlaylist.id) {
             this.getCurrentPlaylist();
         }
     }
 
     getCurrentPlaylist = () => {
-        const playlistId = this.props.match.params.playlist_id
+        const playlistId = this.props.match.params.playlistId
         const accessToken = JSON.parse(localStorage.getItem("user")).access_token
 
         fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
@@ -62,7 +62,7 @@ class RoomContainer extends Component {
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
-            localStorage.setItem("user", JSON.stringify(updatedUser))
+            localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
         })
     }
 
@@ -74,8 +74,8 @@ class RoomContainer extends Component {
                     <Col sm={8}>
                         <Row>
                             <PlaylistDetails playlist={this.state.currentPlaylist}/>
-                            <TracksList playlistId={this.props.match.params.playlist_id}/>
                         </Row>
+                            <TracksList playlistId={this.props.match.params.playlistId}/>
                     </Col>
                     <Col>
                         <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
