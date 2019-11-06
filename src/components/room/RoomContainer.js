@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TracksList from './TracksList';
 import PlaylistDetails from './PlaylistDetails';
+import ChatContainer from './ChatContainer';
 
 class RoomContainer extends Component {
     state = {
@@ -57,7 +58,7 @@ class RoomContainer extends Component {
             body: JSON.stringify({
                 user: {
                     id: userId,
-                    roomId: null
+                    room_id: null
                 }
             })
         }
@@ -86,7 +87,7 @@ class RoomContainer extends Component {
                         <TracksList playlistId={this.props.match.params.playlistId}/>
                     </Col>
                     <Col>
-                        
+                        <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId}/>
                     </Col>
                 </Row>
             </Container>
