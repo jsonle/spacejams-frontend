@@ -8,8 +8,7 @@ const PlaylistDetails = ( {image, playlist, owner, handleClick} ) => {
             <Image className="playlist-cover" src={image}  />
             <div className="playlist-info">
                 <h2>{playlist.name}</h2>
-                <footer>Playlist by {owner.display_name}</footer>
-                <p>{playlist.description}</p>
+                Playlist by {owner.display_name}
                 <div className="leave-button">
                     <Button variant="success" onClick={handleClick}>Leave Room</Button>
                 </div>

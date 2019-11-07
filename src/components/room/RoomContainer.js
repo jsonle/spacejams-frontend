@@ -30,7 +30,6 @@ class RoomContainer extends Component {
         })
         .then(resp => resp.json())
         .then(playlist => {
-            console.log(playlist);
             this.setState({
                 currentPlaylist: playlist,
                 playlistImage: playlist.images[0].url,
@@ -72,7 +71,6 @@ class RoomContainer extends Component {
     }
 
     render() { 
-        // console.log(this.state.playlistImage)
         return (
             <>
             <Container fluid>
@@ -87,7 +85,8 @@ class RoomContainer extends Component {
                         <TracksList playlistId={this.props.match.params.playlistId}/>
                     </Col>
                     <Col>
-                        <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId}/>
+                        <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId} currentUser={this.props.currentUser}/>
+
                     </Col>
                 </Row>
             </Container>
