@@ -86,7 +86,6 @@ class RoomContainer extends Component {
                     </Col>
                     <Col>
                         <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId} currentUser={this.props.currentUser}/>
-
                     </Col>
                 </Row>
             </Container>

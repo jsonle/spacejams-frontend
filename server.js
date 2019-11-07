@@ -15,12 +15,16 @@ io.on('connection', socket => {
     console.log(`user left ${room}`)
     socket.leave(room)
   })
+
   socket.on('enter', room => {
     console.log(`user entered ${room}`)
     socket.join(room);
   })
+
+  socket.on('sendMessage', message => {
+    io.in(`room_${message.room_id}`).emit('receiveMessage', message)
+  })
   
-    
 })
   
 server.listen(port, () => console.log(`Listening on port ${port}`))

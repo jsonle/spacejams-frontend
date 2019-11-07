@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import socketIOClient from "socket.io-client";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -10,38 +10,31 @@ class ChatContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentMessages : [],
+            displayedMessages: {
+                messages: []
+            },
             newMessage: {
                 user_id: props.currentUser.id,
                 room_id: props.roomId,
                 content: ""
             },
-            endPoint: "http://127.0.0.1:8000"
         }
     }
 
     componentDidMount() {
         const roomId = this.props.roomId;
-        socket.emit('enter', `room_${roomId}`)
+        socket.emit('enter', `room_${roomId}`);
 
-        if (!this.state.currentMessages[0]) {
-            this.getCurrentRoomMessages()
-        }
-    }
-
-    getCurrentRoomMessages = () => {
-        const roomId = this.props.roomId;
-
-        fetch(`http://localhost:3000/rooms/${roomId}`)
-        .then(resp => resp.json())
-        .then(room => {
+        socket.on('receiveMessage', message => {
             this.setState({
-                messages: room.messages
+                displayedMessages: {
+                    messages: [...this.state.displayedMessages.messages, message]
+                }
             })
         })
     }
 
-    sendMessage = (socket, event) => {
+    handleSendMessage = (socket, event) => {
         event.preventDefault();
         let config = {
             method: "POST",
@@ -51,9 +44,18 @@ class ChatContainer extends Component {
             },
             body: JSON.stringify(this.state.newMessage)
         }
-        fetch('http://localhost:3000/rooms', config)
+        fetch('http://localhost:3000/messages', config)
         .then(resp => resp.json())
-
+        .then( message => {
+            console.log("successfully posted", message);
+            socket.emit('sendMessage', message);
+            this.setState({
+                newMessage: {
+                    ...this.state.newMessage,
+                    content: ""
+                }
+            })
+        })
     }
 
     handleInputChange = (event) => {
@@ -70,17 +72,16 @@ class ChatContainer extends Component {
         socket.emit('leave', `room_${roomId}`)
     }
 
-
-
     render() { 
+        console.log(this.state.displayedMessages.messages)
         return (
-            <div>
+            <>
                 <MessageBox />
                 <Form>
                     <Form.Control className="message-input" type="text" onChange={this.handleInputChange} value={this.state.newMessage.content} placeholder="Enter message"/>
-                    <Button variant="success" type="submit" onClick={(event) => this.sendMessage(socket, event)}>Send</Button>
+                    <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
                 </Form>
-            </div>
+            </>
         );
     }
 }
