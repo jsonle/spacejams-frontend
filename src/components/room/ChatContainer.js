@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import socketIOClient from "socket.io-client";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup'
 import MessageBox from './MessageBox';
 const endpoint = "http://127.0.0.1:8000"
 const socket = socketIOClient(endpoint);
@@ -76,11 +77,19 @@ class ChatContainer extends Component {
         console.log(this.state.displayedMessages.messages)
         return (
             <>
-                <MessageBox />
-                <Form>
-                    <Form.Control className="message-input" type="text" onChange={this.handleInputChange} value={this.state.newMessage.content} placeholder="Enter message"/>
-                    <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
-                </Form>
+                <MessageBox messages={this.state.displayedMessages.messages}/>
+                <InputGroup className="mb-3">
+                    <Form.Control
+                     className="message-input" 
+                     type="text" 
+                     onChange={this.handleInputChange} 
+                     value={this.state.newMessage.content} 
+                     placeholder="Enter message"
+                    />
+                    <InputGroup.Append>
+                        <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
+                    </InputGroup.Append>
+                </InputGroup>
             </>
         );
     }

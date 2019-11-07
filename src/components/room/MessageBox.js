@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import MessageItem from './MessageItem';
 
-const MessageBox = () => {
-    return (
-        <div>Hello</div>
-    );
+class MessageBox extends Component {
+    state = {  }
+
+    displayMessages = () => {
+        return this.props.messages.map((message, index) => <MessageItem message={message} key={index}/>)
+    }
+
+    render() { 
+        return (
+            <div className="chat-box">
+                {this.displayMessages()}
+            </div>
+        );
+    }
 }
  
 export default MessageBox;
+ 

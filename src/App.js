@@ -53,7 +53,7 @@ class App extends React.Component {
             <Route exact path="/" render={(routeProps) => <HomePageContainer {...routeProps} currentUser={this.state.currentUser}/>} />
             <Route path="/callback" component={this.handleCallBack} />
             <Route path="/browse"  render={(routeProps) => <BrowseContainer {...routeProps} currentUser={this.state.currentUser} />} />
-            <Route path='/room/:playlistId/:roomId'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser} currentRoom={this.state.currentRoom}/>}/>
+            <Route path='/room/:playlistId/:roomId'render={(routeProps) => <RoomContainer {...routeProps} currentUser={this.state.currentUser}/>}/>
           </Switch>
         </div>
     )
