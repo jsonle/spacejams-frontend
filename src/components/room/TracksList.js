@@ -33,7 +33,15 @@ class TracksList extends Component {
     displayTracks = () => {
         return this.state.currentTracks.map( (track, index) => {
             if (track.track) {
-                return <TrackItem track={track.track} key={index} listNumber={index + 1} displayArtistNames={this.displayArtistNames}/>
+                return (
+                    <TrackItem
+                    track={track.track}
+                    key={index}
+                    listNumber={index + 1}
+                    displayArtistNames={this.displayArtistNames}
+                    handleTrackClick={this.handleTrackClick}
+                    />
+                )
             }
         })
     }
@@ -45,6 +53,11 @@ class TracksList extends Component {
             return nameArray.push(artist.name)
         })
         return nameArray.join(", ")
+    }
+
+    handleTrackClick = (event, track) => {
+        event.preventDefault();
+        this.props.onSelectTrack(track);
     }
 
 
