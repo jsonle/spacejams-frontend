@@ -23,7 +23,6 @@ class TracksList extends Component {
         })
         .then(resp => resp.json())
         .then(tracks => {
-            console.log(tracks.items)
             this.setState({
                 currentTracks: tracks.items
             })
@@ -39,10 +38,11 @@ class TracksList extends Component {
         })
     }
 
+    // Takes care of tracks that have multiple artists
     displayArtistNames = (artists) => {
         const nameArray = []
         artists.map(artist => {
-            nameArray.push(artist.name)
+            return nameArray.push(artist.name)
         })
         return nameArray.join(", ")
     }

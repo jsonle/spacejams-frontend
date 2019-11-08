@@ -20,6 +20,7 @@ class BrowseContainer extends Component {
         })
     }
 
+    // User enters a room
     handleClick = (event) => {
         event.preventDefault();
         const roomId = event.target.value
@@ -35,7 +36,7 @@ class BrowseContainer extends Component {
             body: JSON.stringify({
                 user: {
                     id: userId,
-                    roomId: roomId
+                    room_id: roomId
                 }
             })
         }
@@ -45,7 +46,7 @@ class BrowseContainer extends Component {
         .then( updatedUser => {
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser))
-            this.props.onEnterRoom(playlistId, roomId)
+            this.props.history.push(`/room/${playlistId}/${roomId}`)
         })
     }
 
