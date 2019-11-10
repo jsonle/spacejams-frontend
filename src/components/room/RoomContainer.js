@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -54,33 +53,6 @@ class RoomContainer extends Component {
         })
     }
 
-    // Removes user and room association when user leaves room
-    componentWillUnmount() {
-        const userId = JSON.parse(localStorage.getItem("user")).id
-
-        let config = {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                user: {
-                    id: userId,
-                    room_id: null
-                }
-            })
-        }
-
-        fetch(`http://localhost:3000/users/${userId}`, config)
-        .then( resp => resp.json())
-        .then( updatedUser => {
-            localStorage.clear();
-            localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
-        })
-    }
-
-
     render() { 
         console.log(this.state.currentTrack);
         return (
@@ -94,10 +66,12 @@ class RoomContainer extends Component {
                         <TracksList playlistId={this.props.match.params.playlistId} onSelectTrack={this.onSelectTrack}/>
                     </Col>
                     <Col>
-                        <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId} currentUser={this.props.currentUser}/>
-                        <div className="leave-button">
-                            <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
-                        </div>
+                        <ChatContainer
+                         roomId={this.props.match.params.roomId}
+                         currentUser={this.props.currentUser}
+                         handleLeaveRoomClick={this.handleLeaveRoomClick}
+                         />
+
                     </Col>
                 </Row>
             </Container>

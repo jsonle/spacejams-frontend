@@ -69,20 +69,20 @@
   float: left;
 }
 
-.leave-button {
-  position: relative;
-  margin-top: 10px;
-}
-
 .chat-box {
   width: 100%;
-  height: 60%;
+  height: 70%;
   border: 1px solid green;
   text-align: left;
+  overflow: scroll;
 }
 
 .audio-player {
   position: relative;
   bottom: -120px;
+}
+
+#leave-room-btn {
+  margin-right: 10px;
 }
 
