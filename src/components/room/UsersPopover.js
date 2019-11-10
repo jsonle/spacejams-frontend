@@ -2,10 +2,8 @@ import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
-import PopoverTitle from 'react-bootstrap/PopoverTitle';
-import PopoverContent from 'react-bootstrap/PopoverContent'
 
-const UsersPopover = () => {
+const UsersPopover = ({ currentUsers, displayUsers }) => {
     return (
         <OverlayTrigger trigger="click"
          placement="bottom"
@@ -13,11 +11,11 @@ const UsersPopover = () => {
              <Popover id="users-list">
                  <Popover.Title as="h3">Users currently in room</Popover.Title>
                  <Popover.Content>
-                    Users List
+                    {displayUsers()}
                  </Popover.Content>
              </Popover>
          }>
-             <Button variant="success">Users</Button>
+             <Button variant="success"> Users listening({currentUsers.length})</Button>
          </OverlayTrigger>
     );
 }

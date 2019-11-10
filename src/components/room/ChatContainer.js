@@ -101,9 +101,16 @@ class ChatContainer extends Component {
         })
     }
 
+    displayUsers = () => {
+        const nameArray = [];
+        this.state.currentUsers.map(user => {
+            return nameArray.push(user.display_name);
+        })
+        return nameArray.join(', ');
+    }
+
     componentWillUnmount() {
         const user = JSON.parse(localStorage.getItem("user"));
-        const roomId = this.props.roomId;
 
         let config = {
             method: "PATCH",
@@ -147,10 +154,10 @@ class ChatContainer extends Component {
                         <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
                     </InputGroup.Append>
                 </InputGroup>
-                <ButtonToolbar>
+                {/* <ButtonToolbar> */}
                     <Button variant="success" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
-                    <UsersPopover />
-                </ButtonToolbar>
+                    <UsersPopover currentUsers={this.state.currentUsers} displayUsers={this.displayUsers}/>
+                {/* </ButtonToolbar> */}
             </>
         );
     }
