@@ -3,15 +3,18 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 import TracksList from './TracksList';
 import PlaylistDetails from './PlaylistDetails';
 import ChatContainer from './ChatContainer';
+import AudioPlayer from './AudioPlayer';
 
 class RoomContainer extends Component {
     state = {
         currentPlaylist: {},
         playlistImage: "",
-        playlistOwner: {}
+        playlistOwner: {},
+        currentTrack: null
     }
 
     componentDidMount() {
@@ -45,6 +48,12 @@ class RoomContainer extends Component {
         this.props.history.push('/browse')
     }
 
+    onSelectTrack = (track) => {
+        this.setState({
+            currentTrack: track
+        })
+    }
+
     // Removes user and room association when user leaves room
     componentWillUnmount() {
         const userId = JSON.parse(localStorage.getItem("user")).id
@@ -71,18 +80,18 @@ class RoomContainer extends Component {
         })
     }
 
+
     render() { 
+        console.log(this.state.currentTrack);
         return (
             <>
             <Container fluid>
                 <Row>
                     <Col sm={8} className="playlist-column">
-                        <PlaylistDetails 
-                            playlist={this.state.currentPlaylist} 
-                            image={this.state.playlistImage} 
-                            owner={this.state.playlistOwner}
-                        />
-                        <TracksList playlistId={this.props.match.params.playlistId}/>
+                        <Image className="playlist-cover" src={this.state.playlistImage} />
+                        <PlaylistDetails playlist={this.state.currentPlaylist} owner={this.state.playlistOwner} />
+                        <AudioPlayer track={this.state.currentTrack} />
+                        <TracksList playlistId={this.props.match.params.playlistId} onSelectTrack={this.onSelectTrack}/>
                     </Col>
                     <Col>
                         <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId} currentUser={this.props.currentUser}/>
