@@ -51,6 +51,19 @@ class ChatContainer extends Component {
                 }
             })
         });
+
+        socket.on('leaveRoom', message => {
+            fetch(`http://localhost:3000/rooms/${roomId}`)
+            .then(resp => resp.json())
+            .then(room => {
+                this.setState({
+                    displayedMessages: {
+                        messages: [...this.state.displayedMessages.messages, message]
+                    },
+                    currentUsers: room.users
+                })
+            }) 
+        })
     }
 
     
@@ -89,8 +102,32 @@ class ChatContainer extends Component {
     }
 
     componentWillUnmount() {
+        const user = JSON.parse(localStorage.getItem("user"));
         const roomId = this.props.roomId;
-        socket.emit('leave', `room_${roomId}`)
+
+        let config = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                user: {
+                    id: user.id,
+                    room_id: null
+                }
+            })
+        }
+
+        fetch(`http://localhost:3000/users/${user.id}`, config)
+        .then( resp => resp.json())
+        .then( updatedUser => {
+            localStorage.clear();
+            localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
+            socket.emit('leave', user)
+        })
+
+        
     }
 
     render() { 

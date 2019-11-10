@@ -11,19 +11,20 @@ const io = socketIO(server)
 
 io.on('connection', socket => {
 
-  socket.on('leave', room => {
-    console.log(`user left ${room}`)
-    socket.leave(room)
+  socket.on('leave', user => {
+    console.log(`${user.display_name} entered room_${user.room_id}`)
+    socket.leave(`room_${user.room_id}`)
+    io.in(`room_${user.room_id}`).emit('leaveRoom', leaveMessage(user))
   })
 
   socket.on('enter', user => {
-    console.log(`${user.display_name} entered room_${user.room_id}`)
+    console.log(`${user.display_name} left room_${user.room_id}`)
     socket.join(`room_${user.room_id}`);
     io.in(`room_${user.room_id}`).emit('joinRoom', joinMessage(user))
   })
 
   socket.on('sendMessage', message => {
-    io.in(`room_${message.room_id}`).emit('receiveMessage', chatMessage())
+    io.in(`room_${message.room_id}`).emit('receiveMessage', chatMessage(message))
   })
   
 })
@@ -39,7 +40,12 @@ const chatMessage = (message) => {
 
 const joinMessage = (user) => {
   return {
-    user_name: user.display_name,
-    content: "has joined the room"
+    content: `${user.display_name} has joined the room`
+  }
+}
+
+const leaveMessage = (user) => {
+  return {
+    content: `${user.display_name} has left the room`
   }
 }

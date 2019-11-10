@@ -55,28 +55,28 @@ class RoomContainer extends Component {
 
     // Removes user and room association when user leaves room
     componentWillUnmount() {
-        const userId = JSON.parse(localStorage.getItem("user")).id
+        // const userId = JSON.parse(localStorage.getItem("user")).id
 
-        let config = {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                user: {
-                    id: userId,
-                    room_id: null
-                }
-            })
-        }
+        // let config = {
+        //     method: "PATCH",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Accept": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         user: {
+        //             id: userId,
+        //             room_id: null
+        //         }
+        //     })
+        // }
 
-        fetch(`http://localhost:3000/users/${userId}`, config)
-        .then( resp => resp.json())
-        .then( updatedUser => {
-            localStorage.clear();
-            localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
-        })
+        // fetch(`http://localhost:3000/users/${userId}`, config)
+        // .then( resp => resp.json())
+        // .then( updatedUser => {
+        //     localStorage.clear();
+        //     localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
+        // })
     }
 
 
