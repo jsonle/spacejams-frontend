@@ -32,7 +32,7 @@ class TracksList extends Component {
 
     displayTracks = () => {
         return this.state.currentTracks.map( (track, index) => {
-            if (track.track) {
+            if (track.track.preview_url) {
                 return (
                     <TrackItem
                     track={track.track}

@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 class AudioPlayer extends Component {
     state = {  }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.track !== prevProps.track) {
-            if (this.props.track.preview_url) {
-                this.player.src = this.props.track.preview_url;
-                this.player.play();
-            }
+            this.player.src = this.props.track.preview_url;
+            this.player.play();
         }
     }
 
@@ -16,7 +14,7 @@ class AudioPlayer extends Component {
         console.log(this.props.track)
         return (
             <div className="audio-player">
-                {this.props.track && <h3>{this.props.track.name}</h3>}
+                {this.props.track ? <h3>{this.props.track.name}</h3> : <h3>Select a track to start listening</h3>}
                 <audio controls ref={ref => this.player = ref}/>
             </div>
         );
