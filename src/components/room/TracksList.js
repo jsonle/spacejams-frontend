@@ -27,7 +27,20 @@ class TracksList extends Component {
                 currentTracks: tracks.items
             })
         })
-    
+    }
+
+    // Takes care of tracks that have multiple artists
+    displayArtistNames = (artists) => {
+        const nameArray = []
+        artists.map(artist => {
+            return nameArray.push(artist.name)
+        })
+        return nameArray.join(", ")
+    }
+
+    handleTrackClick = (event, track) => {
+        event.preventDefault();
+        this.props.onSelectTrack(track);
     }
 
     displayTracks = () => {
@@ -45,21 +58,6 @@ class TracksList extends Component {
             }
         })
     }
-
-    // Takes care of tracks that have multiple artists
-    displayArtistNames = (artists) => {
-        const nameArray = []
-        artists.map(artist => {
-            return nameArray.push(artist.name)
-        })
-        return nameArray.join(", ")
-    }
-
-    handleTrackClick = (event, track) => {
-        event.preventDefault();
-        this.props.onSelectTrack(track);
-    }
-
 
     render() { 
         // console.log(this.state.currentTracks[0])
