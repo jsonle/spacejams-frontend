@@ -16,15 +16,30 @@ io.on('connection', socket => {
     socket.leave(room)
   })
 
-  socket.on('enter', room => {
-    console.log(`user entered ${room}`)
-    socket.join(room);
+  socket.on('enter', user => {
+    console.log(`${user.display_name} entered room_${user.room_id}`)
+    socket.join(`room_${user.room_id}`);
+    io.in(`room_${user.room_id}`).emit('joinRoom', joinMessage(user))
   })
 
   socket.on('sendMessage', message => {
-    io.in(`room_${message.room_id}`).emit('receiveMessage', message)
+    io.in(`room_${message.room_id}`).emit('receiveMessage', chatMessage())
   })
   
 })
   
 server.listen(port, () => console.log(`Listening on port ${port}`))
+
+const chatMessage = (message) => {
+  return {
+    user_name: message.user.display_name,
+    content: message.content
+  }
+}
+
+const joinMessage = (user) => {
+  return {
+    user_name: user.display_name,
+    content: "has joined the room"
+  }
+}

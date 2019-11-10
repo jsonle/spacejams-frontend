@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -94,10 +93,12 @@ class RoomContainer extends Component {
                         <TracksList playlistId={this.props.match.params.playlistId} onSelectTrack={this.onSelectTrack}/>
                     </Col>
                     <Col>
-                        <ChatContainer currentRoom={this.props.currentRoom} roomId={this.props.match.params.roomId} currentUser={this.props.currentUser}/>
-                        <div className="leave-button">
-                            <Button variant="success" onClick={this.handleLeaveRoomClick}>Leave Room</Button>
-                        </div>
+                        <ChatContainer
+                         roomId={this.props.match.params.roomId}
+                         currentUser={this.props.currentUser}
+                         handleLeaveRoomClick={this.handleLeaveRoomClick}
+                         />
+
                     </Col>
                 </Row>
             </Container>

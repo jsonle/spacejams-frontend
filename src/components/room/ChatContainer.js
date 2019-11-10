@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import socketIOClient from "socket.io-client";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import InputGroup from 'react-bootstrap/InputGroup';
 import MessageBox from './MessageBox';
+import UsersPopover from './UsersPopover';
 const endpoint = "http://127.0.0.1:8000"
 const socket = socketIOClient(endpoint);
 
@@ -19,12 +21,28 @@ class ChatContainer extends Component {
                 room_id: props.roomId,
                 content: ""
             },
+            currentUsers: []
         }
     }
 
     componentDidMount() {
+        const user = JSON.parse(localStorage.getItem("user"));
         const roomId = this.props.roomId;
-        socket.emit('enter', `room_${roomId}`);
+    
+        socket.emit('enter', user);
+
+        socket.on('joinRoom', message => {
+            fetch(`http://localhost:3000/rooms/${roomId}`)
+            .then(resp => resp.json())
+            .then(room => {
+                this.setState({
+                    displayedMessages: {
+                        messages: [...this.state.displayedMessages.messages, message]
+                    },
+                    currentUsers: room.users
+                })
+            })
+        })
 
         socket.on('receiveMessage', message => {
             this.setState({
@@ -32,8 +50,10 @@ class ChatContainer extends Component {
                     messages: [...this.state.displayedMessages.messages, message]
                 }
             })
-        })
+        });
     }
+
+    
 
     handleSendMessage = (socket, event) => {
         event.preventDefault();
@@ -74,7 +94,7 @@ class ChatContainer extends Component {
     }
 
     render() { 
-        console.log(this.state.displayedMessages.messages)
+        console.log(this.state)
         return (
             <>
                 <MessageBox messages={this.state.displayedMessages.messages}/>
@@ -90,6 +110,10 @@ class ChatContainer extends Component {
                         <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
                     </InputGroup.Append>
                 </InputGroup>
+                <ButtonToolbar>
+                    <Button variant="success" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
+                    <UsersPopover />
+                </ButtonToolbar>
             </>
         );
     }
