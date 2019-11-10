@@ -154,10 +154,8 @@ class ChatContainer extends Component {
                         <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
                     </InputGroup.Append>
                 </InputGroup>
-                {/* <ButtonToolbar> */}
-                    <Button variant="success" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
-                    <UsersPopover currentUsers={this.state.currentUsers} displayUsers={this.displayUsers}/>
-                {/* </ButtonToolbar> */}
+                <Button id="leave-room-btn" variant="success" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
+                <UsersPopover currentUsers={this.state.currentUsers} displayUsers={this.displayUsers}/>
             </>
         );
     }
