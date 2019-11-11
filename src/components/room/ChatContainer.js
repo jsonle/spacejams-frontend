@@ -110,7 +110,7 @@ class ChatContainer extends Component {
     }
 
     componentWillUnmount() {
-        const user = JSON.parse(localStorage.getItem("user"));
+        // const user = JSON.parse(localStorage.getItem("user"));
 
         let config = {
             method: "PATCH",
@@ -120,18 +120,18 @@ class ChatContainer extends Component {
             },
             body: JSON.stringify({
                 user: {
-                    id: user.id,
+                    id: this.props.currentUser.id,
                     room_id: null
                 }
             })
         }
 
-        fetch(`http://localhost:3000/users/${user.id}`, config)
+        fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
-            socket.emit('leave', user)
+            socket.emit('leave', updatedUser)
         })
 
         

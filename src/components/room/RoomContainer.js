@@ -65,7 +65,7 @@ class RoomContainer extends Component {
                         <AudioPlayer track={this.state.currentTrack} />
                         <TracksList playlistId={this.props.match.params.playlistId} onSelectTrack={this.onSelectTrack}/>
                     </Col>
-                    <Col>
+                    <Col className="chat-column">
                         <ChatContainer
                          roomId={this.props.match.params.roomId}
                          currentUser={this.props.currentUser}

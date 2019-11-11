@@ -65,16 +65,21 @@
   margin-right: 0;
 }
 
+.chat-column {
+  overflow: scroll;
+}
+
 .playlist-cover {
   float: left;
 }
 
 .chat-box {
   width: 100%;
-  height: 70%;
+  height: 65%;
   border: 1px solid green;
   text-align: left;
   overflow: scroll;
+  padding: 5px;
 }
 
 .audio-player {
@@ -85,6 +90,10 @@
 .dropdown {
   margin-left: auto;
 }
+
+/* .message-content {
+  margin-left: 5px;
+} */
 
 #leave-room-btn {
   margin-right: 10px;
