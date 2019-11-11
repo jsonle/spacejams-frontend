@@ -12,13 +12,13 @@ const io = socketIO(server)
 io.on('connection', socket => {
 
   socket.on('leave', user => {
-    console.log(`${user.display_name} entered room_${user.room_id}`)
+    console.log(`${user.display_name} left room_${user.room_id}`)
     socket.leave(`room_${user.room_id}`)
     io.in(`room_${user.room_id}`).emit('leaveRoom', leaveMessage(user))
   })
 
   socket.on('enter', user => {
-    console.log(`${user.display_name} left room_${user.room_id}`)
+    console.log(`${user.display_name} has entered room_${user.room_id}`)
     socket.join(`room_${user.room_id}`);
     io.in(`room_${user.room_id}`).emit('joinRoom', joinMessage(user))
   })

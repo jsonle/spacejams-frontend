@@ -110,7 +110,8 @@ class ChatContainer extends Component {
     }
 
     componentWillUnmount() {
-        // const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("user"));
+        socket.emit('leave', user)
 
         let config = {
             method: "PATCH",
@@ -131,7 +132,6 @@ class ChatContainer extends Component {
         .then( updatedUser => {
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
-            socket.emit('leave', updatedUser)
         })
 
         

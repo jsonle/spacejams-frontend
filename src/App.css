@@ -28,9 +28,11 @@ html {
 body {
   /* background-color: rgb(129, 127, 127) !important; */
   background-image: url("https://wallpaperaccess.com/full/856733.jpg");
+  /* background-image: url("https://i.pinimg.com/originals/6a/d2/94/6ad29461a999ed84dc0911d045d3eb24.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 1;
   height: 100%;
   color: gold !important;
   font-family: Arial, sans-serif !important;
@@ -100,6 +102,7 @@ body {
   text-align: left;
   overflow: scroll;
   padding: 5px;
+  color: black;
   background-color: rgb(247, 252, 247);
 }
 
