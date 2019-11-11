@@ -5,9 +5,10 @@ import LoginPage from '../login/LoginPage';
 class HomePageContainer extends Component {
     state = {  }
     render() { 
+        const user = JSON.parse(localStorage.getItem("user"));
         return (
             <div>
-                {this.props.currentUser ? <WelcomePage currentUser={this.props.currentUser} /> : <LoginPage />}
+                { user ? <WelcomePage currentUser={user} /> : <LoginPage />}
             </div>
         );
     }
