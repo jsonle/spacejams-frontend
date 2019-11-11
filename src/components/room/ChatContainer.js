@@ -32,7 +32,7 @@ class ChatContainer extends Component {
         socket.emit('enter', user);
 
         socket.on('joinRoom', message => {
-            fetch(`http://localhost:3000/rooms/${roomId}`)
+            fetch(`https://blooming-meadow-49798.herokuapp.com/rooms/${roomId}`)
             .then(resp => resp.json())
             .then(room => {
                 this.setState({
@@ -53,7 +53,7 @@ class ChatContainer extends Component {
         });
 
         socket.on('leaveRoom', message => {
-            fetch(`http://localhost:3000/rooms/${roomId}`)
+            fetch(`https://blooming-meadow-49798.herokuapp.com/rooms/${roomId}`)
             .then(resp => resp.json())
             .then(room => {
                 this.setState({

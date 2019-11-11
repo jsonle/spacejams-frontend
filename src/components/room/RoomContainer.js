@@ -33,6 +33,7 @@ class RoomContainer extends Component {
         })
         .then(resp => resp.json())
         .then(playlist => {
+            console.log(playlist)
             this.setState({
                 currentPlaylist: playlist,
                 playlistImage: playlist.images[0].url,

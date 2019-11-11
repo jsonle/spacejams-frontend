@@ -1,6 +1,6 @@
 
 const Routes = {
-    login: 'http://localhost:3000/login'
+    login: 'https://blooming-meadow-49798.herokuapp.com/login'
 }
 
 export default Routes;

@@ -11,7 +11,7 @@ class BrowseContainer extends Component {
     }
 
     fetchRooms = () => {
-        fetch('http://localhost:3000/rooms')
+        fetch('https://blooming-meadow-49798.herokuapp.com/rooms')
         .then(resp => resp.json())
         .then(resp => {
             this.setState({
@@ -41,7 +41,7 @@ class BrowseContainer extends Component {
             })
         }
 
-        fetch(`http://localhost:3000/users/${userId}`, config)
+        fetch(`https://blooming-meadow-49798.herokuapp.com/users/${userId}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
