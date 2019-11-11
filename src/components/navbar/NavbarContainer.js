@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
+import Image from 'react-bootstrap/Image'
 import { LinkContainer } from 'react-router-bootstrap';
 import UserMenu from './UserMenu';
 
@@ -19,7 +20,7 @@ class NavbarContainer extends Component {
             <Navbar className="navbar" bg="dark" variant="dark">
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <span style={{color: '#FFFF00'}}>JukeBox</span>
+                        <Image id="brand=image" src="https://image.flaticon.com/icons/svg/1169/1169880.svg" height="30px" width="40px"/><span id="brand-name" style={{color: '#FFFF00'}}>JukeBox</span>
                     </Navbar.Brand>
                 </LinkContainer>
                 { user && <UserMenu user={user} handleLogoutClick={this.handleLogoutClick}/>}

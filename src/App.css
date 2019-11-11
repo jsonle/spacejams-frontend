@@ -21,12 +21,31 @@
   color: #09d3ac;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  /* background-color: rgb(129, 127, 127) !important; */
+  background-image: url("https://wallpaperaccess.com/full/856733.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  color: gold !important;
+  font-family: Arial, sans-serif !important;
+}
+
 .navbar {
   margin-bottom: 15px;
 }
 
 .container-fluid {
   position: fixed;
+}
+
+.card-body {
+  background-color: rgb(114, 115, 119);
 }
 
 .tracks-list {
@@ -39,6 +58,7 @@
 
 .list-group-item {
   display: inline-block;
+  /* background-color: rgb(228, 227, 225) !important; */
 }
 
 .track-info {
@@ -80,6 +100,7 @@
   text-align: left;
   overflow: scroll;
   padding: 5px;
+  background-color: rgb(247, 252, 247);
 }
 
 .audio-player {
@@ -91,12 +112,18 @@
   margin-left: auto;
 }
 
-/* .message-content {
-  margin-left: 5px;
-} */
-
 #leave-room-btn {
   margin-right: 10px;
 }
 
+#brand-name {
+  font-size: 1.50rem;
+  margin-left: 5px;
+}
 
+audio { 
+  width: 600px; 
+  box-shadow: 5px 5px 20px rgba(43, 44, 42, 0.4);
+  border-radius: 90px;
+  transform: scale(1.05);
+}
