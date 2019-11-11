@@ -151,10 +151,10 @@ class ChatContainer extends Component {
                      placeholder="Enter message"
                     />
                     <InputGroup.Append>
-                        <Button variant="success" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
+                        <Button variant="warning" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
                     </InputGroup.Append>
                 </InputGroup>
-                <Button id="leave-room-btn" variant="success" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
+                <Button id="leave-room-btn" variant="warning" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
                 <UsersPopover currentUsers={this.state.currentUsers} displayUsers={this.displayUsers}/>
             </>
         );

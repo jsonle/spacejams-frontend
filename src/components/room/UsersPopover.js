@@ -15,7 +15,7 @@ const UsersPopover = ({ currentUsers, displayUsers }) => {
                  </Popover.Content>
              </Popover>
          }>
-             <Button variant="success"> Users listening({currentUsers.length})</Button>
+             <Button variant="warning"> Users listening({currentUsers.length})</Button>
          </OverlayTrigger>
     );
 }

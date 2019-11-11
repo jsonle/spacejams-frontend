@@ -82,7 +82,12 @@
   bottom: -120px;
 }
 
+.dropdown {
+  margin-left: auto;
+}
+
 #leave-room-btn {
   margin-right: 10px;
 }
+
 
