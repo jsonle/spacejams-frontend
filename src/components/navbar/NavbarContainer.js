@@ -19,7 +19,7 @@ class NavbarContainer extends Component {
             <Navbar className="navbar" bg="dark" variant="dark">
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        JukeBox
+                        <span style={{color: '#FFFF00'}}>JukeBox</span>
                     </Navbar.Brand>
                 </LinkContainer>
                 { user && <UserMenu user={user} handleLogoutClick={this.handleLogoutClick}/>}

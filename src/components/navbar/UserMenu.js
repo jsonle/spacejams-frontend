@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const UserMenu = ({ user, handleLogoutClick }) => {
     return (
-        <DropdownButton title={user.display_name}>
+        <DropdownButton variant="warning" title={user.display_name}>
             <LinkContainer to="/browse">
                 <Dropdown.Item>Browse</Dropdown.Item>
             </LinkContainer>

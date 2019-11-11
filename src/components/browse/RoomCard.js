@@ -13,7 +13,7 @@ const RoomCard = ({ room, handleClick }) => {
                 <Card.Text>
                     Placeholder description
                 </Card.Text>
-                    <Button variant="success" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
+                    <Button variant="warning" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
             </Card.Body>
             <Card.Footer>
                 <small className="text-muted">{users.length} users currently listening</small>
