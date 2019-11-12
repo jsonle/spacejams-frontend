@@ -1,15 +1,20 @@
-const express = require('express')()
+const express = require('express')
+const http = require('http')
 const socketIO = require('socket.io')
 
 
 const port = process.env.PORT || 8000;
 const server = express()
-  .use(express.static(__dirname + './build'))
-  .listen(port, () => console.log(`Listening on port ${port}`))
+  .use(express.static(__dirname + './build'), (req, res, next) => next())
+  .get('*', function(req, res) {res.sendFile(path.join(__dirname, './public/index.html'))})
+  .listen(port, () => console.log(`Listening on ${ port }`));
 
-server.get('*', (req,res) =>{
-  res.sendFile(path.join(__dirname+'./build/index.html'));
-});
+// server.listen(port, () => console.log(`Listening on port ${port}`))
+// const server = http.createServer(app);
+// server.use(express.static(__dirname + './build'))
+// server.get('*', (req,res) =>{
+//   res.sendFile(path.join(__dirname+'./build/index.html'));
+// });
 
 const io = socketIO(server)
 
