@@ -78,7 +78,7 @@ class ChatContainer extends Component {
             },
             body: JSON.stringify(this.state.newMessage)
         }
-        fetch('http://localhost:3000/messages', config)
+        fetch('https://blooming-meadow-49798.herokuapp.com/messages', config)
         .then(resp => resp.json())
         .then( message => {
             console.log("successfully posted", message);
@@ -127,7 +127,7 @@ class ChatContainer extends Component {
             })
         }
 
-        fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, config)
+        fetch(`https://blooming-meadow-49798.herokuapp.com/users/${this.props.currentUser.id}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
