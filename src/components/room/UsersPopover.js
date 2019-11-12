@@ -6,7 +6,7 @@ import Popover from 'react-bootstrap/Popover';
 const UsersPopover = ({ currentUsers, displayUsers }) => {
     return (
         <OverlayTrigger trigger="click"
-         placement="bottom"
+         placement="top"
          overlay={
              <Popover id="users-list">
                  <Popover.Title as="h3">Users currently in room</Popover.Title>
