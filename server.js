@@ -1,11 +1,13 @@
 const express = require('express')
-const http = require('http')
+// const http = require('http')
 const socketIO = require('socket.io')
 
 
 const port = process.env.PORT || 8000;
-const app = express()
-const server = http.createServer(app);
+const server = express()
+  .use(express.static(__dirname + './build'))
+  .listen(port, () => console.log(`Listening on port ${port}`))
+
 
 const io = socketIO(server)
 
@@ -29,7 +31,7 @@ io.on('connection', socket => {
   
 })
   
-server.listen(port, () => console.log(`Listening on port ${port}`))
+
 
 const chatMessage = (message) => {
   return {
