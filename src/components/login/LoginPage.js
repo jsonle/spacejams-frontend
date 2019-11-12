@@ -6,8 +6,8 @@ class LoginPage extends Component {
     render() { 
         return (
             <div>
-                <h1>Welcome to JukeBox!</h1>
-                <Button as="a" href="http://localhost:3000/auth" variant="success">Login with Spotify to get started!</Button>
+                <h1>Welcome to SpaceJams!</h1>
+                <Button as="a" href="http://localhost:3000/auth" variant="warning">Login with Spotify to get started!</Button>
             </div>
         );
     }

@@ -33,6 +33,7 @@ class RoomContainer extends Component {
         })
         .then(resp => resp.json())
         .then(playlist => {
+            console.log(playlist)
             this.setState({
                 currentPlaylist: playlist,
                 playlistImage: playlist.images[0].url,
@@ -65,7 +66,7 @@ class RoomContainer extends Component {
                         <AudioPlayer track={this.state.currentTrack} />
                         <TracksList playlistId={this.props.match.params.playlistId} onSelectTrack={this.onSelectTrack}/>
                     </Col>
-                    <Col>
+                    <Col className="chat-column">
                         <ChatContainer
                          roomId={this.props.match.params.roomId}
                          currentUser={this.props.currentUser}

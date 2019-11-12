@@ -32,7 +32,7 @@ class ChatContainer extends Component {
         socket.emit('enter', user);
 
         socket.on('joinRoom', message => {
-            fetch(`http://localhost:3000/rooms/${roomId}`)
+            fetch(`https://blooming-meadow-49798.herokuapp.com/rooms/${roomId}`)
             .then(resp => resp.json())
             .then(room => {
                 this.setState({
@@ -53,7 +53,7 @@ class ChatContainer extends Component {
         });
 
         socket.on('leaveRoom', message => {
-            fetch(`http://localhost:3000/rooms/${roomId}`)
+            fetch(`https://blooming-meadow-49798.herokuapp.com/rooms/${roomId}`)
             .then(resp => resp.json())
             .then(room => {
                 this.setState({
@@ -111,6 +111,7 @@ class ChatContainer extends Component {
 
     componentWillUnmount() {
         const user = JSON.parse(localStorage.getItem("user"));
+        socket.emit('leave', user)
 
         let config = {
             method: "PATCH",
@@ -120,18 +121,17 @@ class ChatContainer extends Component {
             },
             body: JSON.stringify({
                 user: {
-                    id: user.id,
+                    id: this.props.currentUser.id,
                     room_id: null
                 }
             })
         }
 
-        fetch(`http://localhost:3000/users/${user.id}`, config)
+        fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, config)
         .then( resp => resp.json())
         .then( updatedUser => {
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(updatedUser)) // Updates user in local storage
-            socket.emit('leave', user)
         })
 
         
