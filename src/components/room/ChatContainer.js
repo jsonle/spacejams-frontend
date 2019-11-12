@@ -6,7 +6,7 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import InputGroup from 'react-bootstrap/InputGroup';
 import MessageBox from './MessageBox';
 import UsersPopover from './UsersPopover';
-const endpoint = "http://127.0.0.1:8000"
+const endpoint = "https://spacejams.herokuapp.com/"
 const socket = socketIOClient(endpoint);
 
 class ChatContainer extends Component {
