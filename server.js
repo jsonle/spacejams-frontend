@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express')()
 const socketIO = require('socket.io')
 
 
