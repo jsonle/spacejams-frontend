@@ -125,7 +125,7 @@ body {
 }
 
 audio { 
-  width: 600px; 
+  width: 500px; 
   box-shadow: 5px 5px 20px rgba(43, 44, 42, 0.4);
   border-radius: 90px;
   transform: scale(1.05);
