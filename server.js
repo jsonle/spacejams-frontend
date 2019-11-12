@@ -5,6 +5,9 @@ const socketIO = require('socket.io')
 const port = process.env.PORT || 8000;
 const server = express()
   .use(express.static(__dirname + './build'))
+  .get('*', function(req, res) {
+    res.sendFile('index.html', {root: path.join(__dirname, '.build/')});
+  })
   .listen(port, () => console.log(`Listening on port ${port}`))
 
 
