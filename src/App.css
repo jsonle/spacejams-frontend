@@ -115,6 +115,10 @@ body {
   margin-left: auto;
 }
 
+.popover-header {
+  color: black;
+}
+
 #leave-room-btn {
   margin-right: 10px;
 }
