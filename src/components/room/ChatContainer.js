@@ -142,6 +142,7 @@ class ChatContainer extends Component {
         return (
             <>
                 <MessageBox messages={this.state.displayedMessages.messages}/>
+                <form onSubmit={(event) => this.handleSendMessage(socket, event)}>
                 <InputGroup className="mb-3">
                     <Form.Control
                      className="message-input" 
@@ -151,9 +152,10 @@ class ChatContainer extends Component {
                      placeholder="Enter message"
                     />
                     <InputGroup.Append>
-                        <Button variant="warning" type="submit" onClick={(event) => this.handleSendMessage(socket, event)}>Send</Button>
+                        <Button variant="warning" type="submit" >Send</Button>
                     </InputGroup.Append>
                 </InputGroup>
+                </form>
                 <Button id="leave-room-btn" variant="warning" onClick={this.props.handleLeaveRoomClick}>Leave Room</Button>
                 <UsersPopover currentUsers={this.state.currentUsers} displayUsers={this.displayUsers}/>
             </>
