@@ -20,7 +20,7 @@ class NavbarContainer extends Component {
             <Navbar className="navbar" bg="dark" variant="dark">
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <Image id="brand=image" src="https://image.flaticon.com/icons/svg/1169/1169880.svg" height="30px" width="40px"/><span id="brand-name" style={{color: '#FFFF00'}}>JukeBox</span>
+                        <Image id="brand=image" src={"../../images/logo.svg"} height="30px" width="40px"/><span id="brand-name" style={{color: '#FFFF00'}}>SpaceJams</span>
                     </Navbar.Brand>
                 </LinkContainer>
                 { user && <UserMenu user={user} handleLogoutClick={this.handleLogoutClick}/>}
