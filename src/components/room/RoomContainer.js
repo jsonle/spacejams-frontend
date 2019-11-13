@@ -48,6 +48,17 @@ class RoomContainer extends Component {
         this.props.history.push('/browse')
     }
 
+    playNextTrack = () => {
+        const trackIndex = localStorage.getItem("currentTrackIndex");
+        const tracks = JSON.parse(localStorage.getItem("tracks"));
+        let nextTrackIndex = parseInt(trackIndex);
+        nextTrackIndex++
+        this.setState({
+            currentTrack: tracks[nextTrackIndex].track
+        })
+        localStorage.setItem("currentTrackIndex", nextTrackIndex);
+    }
+
     onSelectTrack = (track) => {
         this.setState({
             currentTrack: track
@@ -63,7 +74,7 @@ class RoomContainer extends Component {
                     <Col sm={8} className="playlist-column">
                         <Image className="playlist-cover" src={this.state.playlistImage} />
                         <PlaylistDetails playlist={this.state.currentPlaylist} owner={this.state.playlistOwner} />
-                        <AudioPlayer track={this.state.currentTrack} />
+                        <AudioPlayer track={this.state.currentTrack} playNextTrack={this.playNextTrack}/>
                         <TracksList playlistId={this.props.match.params.playlistId} onSelectTrack={this.onSelectTrack}/>
                     </Col>
                     <Col className="chat-column">

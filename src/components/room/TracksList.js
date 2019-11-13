@@ -23,8 +23,12 @@ class TracksList extends Component {
         })
         .then(resp => resp.json())
         .then(tracks => {
+            const tracksList = tracks.items.filter(track => track.track.preview_url);
+            console.log(tracksList);
+            localStorage.setItem("tracks", JSON.stringify(tracksList));
+
             this.setState({
-                currentTracks: tracks.items
+                currentTracks: tracksList
             })
         })
     }
@@ -38,8 +42,9 @@ class TracksList extends Component {
         return nameArray.join(", ")
     }
 
-    handleTrackClick = (event, track) => {
+    handleTrackClick = (event, track, listNumber) => {
         event.preventDefault();
+        localStorage.setItem("currentTrackIndex", listNumber)
         this.props.onSelectTrack(track);
     }
 
@@ -50,7 +55,7 @@ class TracksList extends Component {
                     <TrackItem
                     track={track.track}
                     key={index}
-                    listNumber={index + 1}
+                    listNumber={index}
                     displayArtistNames={this.displayArtistNames}
                     handleTrackClick={this.handleTrackClick}
                     />

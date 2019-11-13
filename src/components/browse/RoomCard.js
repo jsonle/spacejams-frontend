@@ -1,20 +1,25 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 const RoomCard = ({ room, handleClick }) => {
-    const {id, playlist_id, playlist_image_url, playlist_name, users} = room
+    const {id, playlist_id, playlist_image_url, playlist_name, playlist_description, users} = room
     return (
         <Card>
             <Card.Img variant="top" src={playlist_image_url} />
             <Card.Body>
                 <Card.Title>{playlist_name}</Card.Title>
                 <Card.Text>
-                    Placeholder description
+                    {playlist_description}
                 </Card.Text>
-                    <Button variant="warning" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
             </Card.Body>
+            <ListGroup>
+                    <ListGroup.Item className="enter-room-container">
+                    <Button variant="warning" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
+                    </ListGroup.Item>
+                </ListGroup>
             <Card.Footer>
                 <small className="text-muted">{users.length} users currently listening</small>
             </Card.Footer>
