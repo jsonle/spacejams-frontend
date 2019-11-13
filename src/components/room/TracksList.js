@@ -30,7 +30,6 @@ class TracksList extends Component {
             this.setState({
                 currentTracks: tracksList
             })
-            return tracks
         })
     }
 

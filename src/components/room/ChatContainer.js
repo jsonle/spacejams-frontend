@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import socketIOClient from "socket.io-client";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import InputGroup from 'react-bootstrap/InputGroup';
 import MessageBox from './MessageBox';
 import UsersPopover from './UsersPopover';
