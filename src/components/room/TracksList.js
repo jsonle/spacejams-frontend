@@ -26,6 +26,11 @@ class TracksList extends Component {
             this.setState({
                 currentTracks: tracks.items
             })
+            return tracks
+        })
+        .then(tracks => {
+            const tracksList = tracks.filter(track => track.track.preview_url);
+            localStorage.setItem("tracks", JSON.stringify(tracksList));
         })
     }
 
