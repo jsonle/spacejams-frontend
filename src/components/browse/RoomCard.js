@@ -16,7 +16,7 @@ const RoomCard = ({ room, handleClick }) => {
                 </Card.Text>
             </Card.Body>
             <ListGroup>
-                    <ListGroup.Item id="enter-room-container">
+                    <ListGroup.Item className="enter-room-container">
                     <Button variant="warning" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
                     </ListGroup.Item>
                 </ListGroup>

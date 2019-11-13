@@ -128,8 +128,8 @@ body {
   margin-left: 5px;
 }
 
-#enter-room-container {
-  background-color: rgb(114, 115, 119);
+.enter-room-container {
+  background-color: rgb(114, 115, 119) !important;
 }
 
 audio { 
