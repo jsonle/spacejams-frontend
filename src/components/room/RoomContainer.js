@@ -52,7 +52,7 @@ class RoomContainer extends Component {
         const trackIndex = localStorage.getItem("currentTrackIndex");
         const tracks = JSON.parse(localStorage.getItem("tracks"))
         this.setState({
-            currentTrack: tracks[trackIndex].track
+            currentTrack: tracks[parseInt(trackIndex + 1)].track
         })
         localStorage.setItem("currentTrackIndex", parseInt(trackIndex) + 1);
     }
