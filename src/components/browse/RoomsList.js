@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RoomCard from './RoomCard';
-import CardDeck from 'react-bootstrap/CardDeck'
+// import CardDeck from 'react-bootstrap/CardDeck'
+import Container from 'react-bootstrap/Container'
 
 class RoomsList extends Component {
     state = {
@@ -16,9 +17,11 @@ class RoomsList extends Component {
 
     render() { 
         return (
-            <CardDeck>
+            <Container>
+                <Row>
                 {this.displayRooms()}
-            </CardDeck>
+                </Row>
+            </Container>
         );
     }
 }
