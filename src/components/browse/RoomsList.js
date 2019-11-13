@@ -21,9 +21,7 @@ class RoomsList extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>
-                    {this.displayRooms()}
-                    </Col>
+                {this.displayRooms()}
                 </Row>
             </Container>
         );
