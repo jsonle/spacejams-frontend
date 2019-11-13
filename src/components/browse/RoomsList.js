@@ -20,9 +20,7 @@ class RoomsList extends Component {
     render() { 
         return (
             <Container>
-                <Row>
                 {this.displayRooms()}
-                </Row>
             </Container>
         );
     }
