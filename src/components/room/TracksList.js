@@ -45,8 +45,8 @@ class TracksList extends Component {
 
     handleTrackClick = (event, track, listNumber) => {
         event.preventDefault();
-        this.props.onSelectTrack(track);
         localStorage.setItem("currentTrackIndex", listNumber)
+        this.props.onSelectTrack(track);
     }
 
     displayTracks = () => {

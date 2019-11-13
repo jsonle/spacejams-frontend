@@ -54,7 +54,7 @@ class RoomContainer extends Component {
         this.setState({
             currentTrack: tracks[trackIndex].track
         })
-        localStorage.setItem("currentTrackIndex", trackIndex + 1);
+        localStorage.setItem("currentTrackIndex", parseInt(trackIndex) + 1);
     }
 
     onSelectTrack = (track) => {
