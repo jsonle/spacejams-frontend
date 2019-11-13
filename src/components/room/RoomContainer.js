@@ -51,10 +51,11 @@ class RoomContainer extends Component {
     playNextTrack = () => {
         const trackIndex = localStorage.getItem("currentTrackIndex");
         const tracks = JSON.parse(localStorage.getItem("tracks"))
+        
         this.setState({
-            currentTrack: tracks[parseInt(trackIndex + 1)].track
+            currentTrack: tracks[parseInt(trackIndex++)].track
         })
-        localStorage.setItem("currentTrackIndex", parseInt(trackIndex) + 1);
+        localStorage.setItem("currentTrackIndex", parseInt(trackIndex++));
     }
 
     onSelectTrack = (track) => {
