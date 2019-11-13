@@ -28,7 +28,7 @@ class TracksList extends Component {
             localStorage.setItem("tracks", JSON.stringify(tracksList));
 
             this.setState({
-                currentTracks: tracks.items
+                currentTracks: tracksList
             })
             return tracks
         })
