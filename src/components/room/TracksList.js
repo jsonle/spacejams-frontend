@@ -43,9 +43,10 @@ class TracksList extends Component {
         return nameArray.join(", ")
     }
 
-    handleTrackClick = (event, track) => {
+    handleTrackClick = (event, track, listNumber) => {
         event.preventDefault();
         this.props.onSelectTrack(track);
+        localStorage.setItem("currentTrackIndex", listNumber)
     }
 
     displayTracks = () => {
@@ -55,7 +56,7 @@ class TracksList extends Component {
                     <TrackItem
                     track={track.track}
                     key={index}
-                    listNumber={index + 1}
+                    listNumber={index}
                     displayArtistNames={this.displayArtistNames}
                     handleTrackClick={this.handleTrackClick}
                     />
