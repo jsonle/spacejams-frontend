@@ -14,13 +14,12 @@ const RoomCard = ({ room, handleClick }) => {
                 <Card.Text>
                     {playlist_description}
                 </Card.Text>
-                <ListGroup>
+            </Card.Body>
+            <ListGroup>
                     <ListGroup.Item>
                     <Button variant="warning" onClick={handleClick} value={id} name={playlist_id}>Enter Room</Button>
                     </ListGroup.Item>
                 </ListGroup>
-                    
-            </Card.Body>
             <Card.Footer>
                 <small className="text-muted">{users.length} users currently listening</small>
             </Card.Footer>
