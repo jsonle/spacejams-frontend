@@ -16,7 +16,7 @@ class TracksList extends Component {
     getTracks = () => {
         const accessToken = JSON.parse(localStorage.getItem("user")).access_token
 
-        fetch(`https://api.spotify.com/v1/playlists/${this.props.playlistId}/tracks?fields=items.track(!available_markets)&limit=50`, {
+        fetch(`https://api.spotify.com/v1/playlists/${this.props.playlistId}/tracks?fields=items.track(!available_markets)`, {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
             }
