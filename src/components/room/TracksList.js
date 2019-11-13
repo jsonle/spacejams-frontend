@@ -23,14 +23,14 @@ class TracksList extends Component {
         })
         .then(resp => resp.json())
         .then(tracks => {
+            const tracksList = tracks.filter(track => track.track.preview_url);
+            console.log(tracksList);
+            localStorage.setItem("tracks", JSON.stringify(tracksList));
+
             this.setState({
                 currentTracks: tracks.items
             })
             return tracks
-        })
-        .then(tracks => {
-            const tracksList = tracks.filter(track => track.track.preview_url);
-            localStorage.setItem("tracks", JSON.stringify(tracksList));
         })
     }
 
