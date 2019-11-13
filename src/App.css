@@ -60,7 +60,7 @@ body {
 
 .list-group-item {
   display: inline-block;
-  border: 1px solid rgb(224, 224, 68) !important;
+  border: 1px solid rgb(233, 233, 69) !important;
 }
 
 .track-info {
@@ -98,7 +98,7 @@ body {
 .chat-box {
   width: 100%;
   height: 65%;
-  border: 1px solid green;
+  border: 1px solid rgb(233, 233, 69);
   text-align: left;
   overflow: scroll;
   padding: 5px;
@@ -117,6 +117,10 @@ body {
 
 .popover-header {
   color: black;
+}
+
+.card {
+  border: 1px solid rgb(233, 233, 69) !important;
 }
 
 #leave-room-btn {

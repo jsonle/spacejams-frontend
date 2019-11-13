@@ -12,7 +12,7 @@ class MessageBox extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.messages.length !== prevProps.messages) {
-
+            this.scrollToBottom();
         }
     }
 
