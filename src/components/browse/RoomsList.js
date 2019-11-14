@@ -12,7 +12,7 @@ class RoomsList extends Component {
 
     displayRooms = () => {
        return this.props.rooms.map( (room, index) => {
-            // return <RoomCard room={room} key={index} handleClick={this.props.handleClick}/>
+            return <RoomCard room={room} key={index} handleClick={this.props.handleClick}/>
         })
     }
 
