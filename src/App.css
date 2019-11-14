@@ -119,7 +119,7 @@ body {
   color: black;
 }
 
-.browse-list > .container > .row {
+#row {
   padding-left: 15%;
   padding-right: 15%;
   overflow: scroll;
