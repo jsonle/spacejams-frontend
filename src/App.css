@@ -119,10 +119,17 @@ body {
   color: black;
 }
 
+.row {
+  padding-left: 15%;
+  padding-right: 15%;
+  overflow: scroll;
+}
+
 .card {
   border: 1px solid rgb(233, 233, 69) !important;
   width: 20%;
-  margin: 15px
+  margin: 15px;
+  padding: 0px;
 }
 
 #leave-room-btn {
@@ -137,10 +144,6 @@ body {
 .enter-room-container {
   background-color: rgb(114, 115, 119) !important;
   
-}
-
-.col {
-  padding: 0px;
 }
 
 audio { 

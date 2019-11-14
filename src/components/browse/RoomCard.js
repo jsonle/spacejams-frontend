@@ -7,7 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 const RoomCard = ({ room, handleClick }) => {
     const {id, playlist_id, playlist_image_url, playlist_name, playlist_description, users} = room
     return (
-        <Card className="col-2">
+        <Card className="col-lg-2 col-md-3 col-sm-4">
             <Card.Img variant="top" src={playlist_image_url} />
             <Card.Body>
                 <Card.Title>{playlist_name}</Card.Title>
