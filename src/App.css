@@ -120,9 +120,12 @@ body {
 }
 
 #browse-row {
-  padding-left: 15%;
-  padding-right: 15%;
   overflow: scroll;
+  height: 90vh;
+}
+
+@media only screen and (1200px) {
+  #browse-row {padding-left: 15%; padding-right: 15%;}
 }
 
 .card {
