@@ -122,6 +122,7 @@ body {
 .card {
   border: 1px solid rgb(233, 233, 69) !important;
   width: 20%;
+  margin: 15px
 }
 
 #leave-room-btn {
