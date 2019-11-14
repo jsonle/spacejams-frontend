@@ -19,7 +19,7 @@ class AudioPlayer extends Component {
         console.log(this.props.track)
         return (
             <div className="audio-player">
-                {this.props.track ? <h3>{this.props.track.name}</h3> : <h3>Select a track to start listening</h3>}
+                {this.props.track ? <h4>{this.props.track.name}</h4> : <h4>Select a track to start listening</h4>}
                 <audio controls ref={ref => this.player = ref} onEnded={this.handleTrackEnded}/>
             </div>
         );

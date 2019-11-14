@@ -119,8 +119,16 @@ body {
   color: black;
 }
 
+#browse-row {
+  overflow: scroll;
+  height: 90vh;
+}
+
 .card {
   border: 1px solid rgb(233, 233, 69) !important;
+  width: 20%;
+  margin: 15px;
+  padding: 0px;
 }
 
 #leave-room-btn {

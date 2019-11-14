@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // Checks whether user has been updated, and if so then updates currentUser
+    
     const updatedUser = JSON.parse(localStorage.getItem("user"));
     if (this.state.currentUser && this.state.currentUser !== updatedUser) {
       this.setState({
