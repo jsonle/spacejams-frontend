@@ -124,10 +124,6 @@ body {
   height: 90vh;
 }
 
-@media only screen and (min-width: 1200px) {
-  #browse-row {padding-left: 15%; padding-right: 15%;}
-}
-
 .card {
   border: 1px solid rgb(233, 233, 69) !important;
   width: 20%;
