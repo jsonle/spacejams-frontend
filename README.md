@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SpaceJams
+A web application that lets users listen to spotify playlists with other people! Users can join playlist rooms, listen to music, and chat with whoever else is listening with you.
 
-## Available Scripts
+## Getting Started
+You can demo SpaceJams [here](https://petsmatch-frontend.herokuapp.com/). 
 
-In the project directory, you can run:
+## Using SpaceJams
 
-### `yarn start`
+### 1) Logging in
+If you aren't logged in, the welcome page for SpaceJams will prompt you to login with Spotify. SpaceJams uses your Spotify account to login, so if you have a Spotify account, there is no need to sign up! 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![SpaceJams_Login](https://media.giphy.com/media/H27I8r4oDm3ZqhnTqs/source.gif)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Once logged in, the welcome page appears with a button to start browsing playlists.
 
-### `yarn test`
+### 2) Browse
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![SpaceJams_Browse](https://media.giphy.com/media/YqVXB554GfJZ6zrim4/source.gif)
 
-### `yarn build`
+On the browse screen you will find multiple rooms with Spotify playlists associated with them. For the sake of demoing, the app only uses public playlists created by Spotifty. You can see how many people are in each room at the bottom of each card. To enter a room just click the 'enter room' button on the playlist you want to listen to.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3) Room Features
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![SpaceJams_Room](https://media.giphy.com/media/h7iCc89oNqfdyFUPnb/source.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once inside a room, you can click on any track to start listening to them. On the right hand side is a live chatbox where you can talk to anyone else inside the room with you! Click the 'Users listening" button on the bottom right side to see who else is in he same room with you.
 
-### `yarn eject`
+## Built With
+React
+Rails
+PostgreSQL
+Bootstrap
+Socket.io
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Created By:
+Jason Le
+```
+@jsonle
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Acknowledgments
+Spotify
+TeePublic for logo
+Wallpaperaccess for background
