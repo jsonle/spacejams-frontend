@@ -32,11 +32,11 @@ On the browse screen you will find multiple rooms with Spotify playlists associa
 Once inside a room, you can click on any track to start listening to them. On the right hand side is a live chatbox where you can talk to anyone else inside the room with you! Click the 'Users listening" button on the bottom right side to see who else is in he same room with you.
 
 ## Built With
-React
-Rails
-PostgreSQL
-Bootstrap
-Socket.io
+* React
+* Rails
+* PostgreSQL
+* Bootstrap
+* Socket.io
 
 
 ## Created By:
@@ -46,6 +46,6 @@ Jason Le
 ```
 
 ## Acknowledgments
-Spotify
-TeePublic for logo
-Wallpaperaccess for background
+* Spotify
+* TeePublic for logo
+* Wallpaperaccess for background
