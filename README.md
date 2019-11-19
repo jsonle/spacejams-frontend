@@ -1,6 +1,8 @@
 # SpaceJams
 A web application that lets users listen to spotify playlists with other people! Users can join playlist rooms, listen to music, and chat with whoever else is listening with you.
 
+Check out the backend code [here](https://github.com/jsonle/spacejams-backend)
+
 ## Getting Started
 You can demo SpaceJams [here](https://spacejams.herokuapp.com/). 
 
